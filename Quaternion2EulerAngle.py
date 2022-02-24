@@ -1,3 +1,8 @@
+'''
+    Quaternion To Euler Angle Converter
+
+    Authoe: Vignesh Natarajan
+'''
 import math
 def Quaternion2EulerAngles(w, x, y, z):
     PIby2 = (math.pi / 2)
@@ -10,7 +15,7 @@ def Quaternion2EulerAngles(w, x, y, z):
     # pitch : rotation in y axis
     pitch_var = float(2 * (w * y - z * x))
     if (abs(pitch_var) >= 1):
-		#In the event of out of range -> use 90 degrees
+	#In the event of out of range -> use 90 degrees
         pitch = math.copysign(PIby2, pitch_var);
     else:
         pitch = math.asin(pitch_var);
@@ -24,9 +29,13 @@ def Quaternion2EulerAngles(w, x, y, z):
     print("pitch    ( radians )  : "+str(pitch))
     print("yaw      ( radians )  : "+str(yaw))
 
-    print("roll     ( degrees )  : "+str(math.degrees(roll)))
-    print("pitch    ( degrees )  : "+str(math.degrees(pitch)))
-    print("yaw      ( degrees )  : "+str(math.degrees(yaw)))
+    roll  = math.degrees(roll)
+    pitch = math.degrees(pitch)
+    yaw   = math.degrees(yaw)
 
+    print("roll     ( degrees )  : "+str(roll))
+    print("pitch    ( degrees )  : "+str(pitch))
+    print("yaw      ( degrees )  : "+str(yaw))
 
+    return roll, pitch, yaw
 Quaternion2EulerAngles(0.9995431, 0.0174506, 0.0174506, 0.0174506)
